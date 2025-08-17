@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const formData = new FormData(form);
         // !!! ВАЖНО: Замените 'ВАША_ССЫЛКА_НА_WEB_APP' на вашу ссылку из Google Apps Script
-        const action = 'https://script.google.com/macros/s/AKfycbwc-6Pfr2YyHMRYK-sINjRavcofR1bs77HjkqK2RG1dE0PONFuLCVnITfu0eBXojWaa/exec';
+        const action = 'https://script.google.com/macros/s/AKfycbyMj4_QUgwdD-9TWawaaFZAG6euQ6ArI9w6GY9kxKL6Bd4jFBiWPYNcLH374q0COmmz/exec';
         
         fetch(action, {
             method: 'POST',
