@@ -1,0 +1,159 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #effdfe; /* Новый белый фон */
+    color: #000; /* Чёрный текст */
+}
+
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    max-width: 150px;
+    margin-top: 40px;
+}
+
+.content {
+    max-width: 600px;
+}
+
+.content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.main-button {
+    background-color: transparent;
+    color: #9b0807; /* Новый красный */
+    border: 2px solid #9b0807; /* Новый красный */
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.main-button:hover {
+    background-color: #9b0807; /* Новый красный */
+    color: #effdfe; /* Новый белый */
+}
+
+/* Стили для оверлея и формы */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.form-container {
+    background-color: #effdfe; /* Новый белый */
+    padding: 40px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+}
+
+#join-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#join-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#join-form input,
+#join-form textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #9b0807; /* Новый красный */
+    border-radius: 0;
+    width: 100%;
+    padding: 15px 5px;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    box-sizing: border-box;
+    color: #000; /* Цвет вводимого текста */
+}
+
+#join-form input:focus,
+#join-form textarea:focus {
+    outline: none;
+}
+
+/* Стиль для плейсхолдера */
+::placeholder {
+    color: #000;
+    opacity: 0.7; 
+}
+
+.submit-button {
+    background-color: transparent;
+    color: #9b0807; /* Новый красный */
+    border: 2px solid #9b0807; /* Новый красный */
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #9b0807; /* Новый красный */
+    color: #effdfe; /* Новый белый */
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 600px) {
+    .content h1 {
+        font-size: 2em;
+    }
+    .content p {
+        font-size: 1em;
+    }
+    .logo {
+        max-width: 120px;
+    }
+    .form-container {
+        padding: 30px;
+    }
+}
