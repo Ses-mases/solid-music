@@ -1,159 +1,103 @@
+:root {
+    --primary-font: 'Montserrat', sans-serif;
+    --primary-red: #9b0807;
+    --primary-white: #effdfe;
+    --primary-black: #000;
+}
+
+/* --- Общие стили --- */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #effdfe; /* Новый белый фон */
-    color: #000; /* Чёрный текст */
+    font-family: var(--primary-font);
+    background-color: var(--primary-white);
+    color: var(--primary-black);
 }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
+/* --- Основной экран и контент --- */
 .main-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    min-height: 100vh;
+    justify-content: center; /* Центрируем контент лучше */
+    min-height: calc(100vh - 100px); /* Вычитаем высоту футера */
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
 }
+.logo { max-width: 150px; margin-top: 40px; }
+.content { max-width: 600px; }
+.content h1 { font-size: 2.5em; margin-bottom: 20px; }
+.content p { font-size: 1.2em; line-height: 1.6; }
 
-.logo {
-    max-width: 150px;
-    margin-top: 40px;
-}
-
-.content {
-    max-width: 600px;
-}
-
-.content h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.content p {
-    font-size: 1.2em;
-    line-height: 1.6;
-}
-
-.main-button {
+/* --- Стили кнопок --- */
+.btn {
     background-color: transparent;
-    color: #9b0807; /* Новый красный */
-    border: 2px solid #9b0807; /* Новый красный */
-    padding: 15px 40px;
-    font-size: 1.2em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    margin-top: 30px;
-    margin-bottom: 40px;
-}
-
-.main-button:hover {
-    background-color: #9b0807; /* Новый красный */
-    color: #effdfe; /* Новый белый */
-}
-
-/* Стили для оверлея и формы */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.form-container {
-    background-color: #effdfe; /* Новый белый */
-    padding: 40px;
-    border-radius: 5px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    box-sizing: border-box;
-}
-
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #000;
-}
-
-#join-form {
-    display: flex;
-    flex-direction: column;
-}
-
-#join-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-#join-form input,
-#join-form textarea {
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #9b0807; /* Новый красный */
-    border-radius: 0;
-    width: 100%;
-    padding: 15px 5px;
-    margin-bottom: 25px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1em;
-    box-sizing: border-box;
-    color: #000; /* Цвет вводимого текста */
-}
-
-#join-form input:focus,
-#join-form textarea:focus {
-    outline: none;
-}
-
-/* Стиль для плейсхолдера */
-::placeholder {
-    color: #000;
-    opacity: 0.7; 
-}
-
-.submit-button {
-    background-color: transparent;
-    color: #9b0807; /* Новый красный */
-    border: 2px solid #9b0807; /* Новый красный */
+    color: var(--primary-red);
+    border: 2px solid var(--primary-red);
     padding: 15px;
-    cursor: pointer;
-    font-size: 1.1em;
+    font-family: var(--primary-font);
     font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
 }
+.btn:hover { background-color: var(--primary-red); color: var(--primary-white); }
+.btn:disabled { background-color: #ccc; border-color: #ccc; color: #666; cursor: not-allowed; }
+.btn:disabled:hover { background-color: #ccc; border-color: #ccc; color: #666; }
 
-.submit-button:hover {
-    background-color: #9b0807; /* Новый красный */
-    color: #effdfe; /* Новый белый */
+.main-button { padding: 15px 40px; font-size: 1.2em; margin-top: 30px; }
+.submit-button { font-size: 1.1em; margin-top: 10px; width: 100%; }
+
+/* --- Оверлей и форма --- */
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: none; align-items: center; justify-content: center; z-index: 1000; }
+.form-container { background-color: var(--primary-white); padding: 40px; border-radius: 5px; width: 90%; max-width: 500px; position: relative; box-sizing: border-box; }
+.close-button { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: var(--primary-black); background: none; border: none; padding: 0; }
+
+#join-form { display: flex; flex-direction: column; }
+#join-form h2 { text-align: center; margin-bottom: 20px; }
+#join-form input, #join-form textarea { background-color: transparent; border: none; border-bottom: 2px solid var(--primary-red); border-radius: 0; width: 100%; padding: 15px 5px; margin-bottom: 25px; font-family: var(--primary-font); font-size: 1em; box-sizing: border-box; color: var(--primary-black); }
+#join-form input:focus, #join-form textarea:focus { outline: none; }
+::placeholder { color: var(--primary-black); opacity: 0.7; }
+
+/* --- Новые стили для Капчи, Политики и Сообщений --- */
+.g-recaptcha { margin-bottom: 20px; display: flex; justify-content: center; }
+.privacy-consent { display: flex; align-items: center; font-size: 0.9em; margin-bottom: 20px; }
+.privacy-consent input[type="checkbox"] { margin-right: 10px; }
+.privacy-consent a { color: var(--primary-red); text-decoration: none; }
+.privacy-consent a:hover { text-decoration: underline; }
+
+#form-message { text-align: center; margin-top: 15px; font-weight: bold; }
+.form-message.success { color: green; }
+.form-message.error { color: var(--primary-red); }
+
+/* --- Футер --- */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #e0f8fa; /* Слегка отличающийся фон */
+    box-sizing: border-box;
+    height: 100px;
+    width: 100%;
 }
+.site-footer p { margin: 0; padding-bottom: 10px; font-size: 0.9em; }
+.site-footer a { color: var(--primary-black); text-decoration: none; font-size: 0.9em; }
+.site-footer a:hover { text-decoration: underline; }
 
-/* Адаптация под мобильные устройства */
+/* --- Стили для страницы Политики --- */
+.static-page-container { max-width: 800px; margin: 0 auto; padding: 20px; min-height: calc(100vh - 100px); }
+.static-page-container header { text-align: center; margin-bottom: 40px; }
+.static-page-container h1 { color: var(--primary-red); }
+.static-page-container h3 { margin-top: 30px; }
+.static-page-container ul { line-height: 1.6; }
+.back-link { display: inline-block; margin-top: 30px; color: var(--primary-red); font-weight: bold; }
+
+/* --- Адаптация --- */
 @media (max-width: 600px) {
-    .content h1 {
-        font-size: 2em;
-    }
-    .content p {
-        font-size: 1em;
-    }
-    .logo {
-        max-width: 120px;
-    }
-    .form-container {
-        padding: 30px;
-    }
+    .content h1 { font-size: 2em; }
+    .content p { font-size: 1em; }
+    .logo { max-width: 120px; }
+    .form-container { padding: 30px; }
 }
