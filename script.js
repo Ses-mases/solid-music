@@ -1,5 +1,17 @@
-// Глобальные callback-функции для reCAPTCHA должны быть вне DOMContentLoaded
 let isRecaptchaValid = false;
+let submitButton;
+let privacyCheck;
+
+
+function updateSubmitButtonState() {
+    if (submitButton && privacyCheck) {
+        if (privacyCheck.checked && isRecaptchaValid) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+}
 
 function onRecaptchaSuccess() {
     isRecaptchaValid = true;
@@ -11,17 +23,19 @@ function onRecaptchaExpired() {
     updateSubmitButtonState();
 }
 
-// Основной скрипт
+
 document.addEventListener('DOMContentLoaded', () => {
     const applyButton = document.getElementById('apply-button');
     const overlay = document.getElementById('overlay');
     const closeButton = document.getElementById('close-button');
     const form = document.getElementById('join-form');
-    const submitButton = document.getElementById('submit-button');
-    const privacyCheck = document.getElementById('privacy-check');
     const formMessage = document.getElementById('form-message');
 
-    if (!applyButton || !overlay || !closeButton || !form) {
+    submitButton = document.getElementById('submit-button');
+    privacyCheck = document.getElementById('privacy-check');
+
+
+    if (!applyButton || !overlay || !closeButton || !form || !submitButton || !privacyCheck) {
         console.error('Ошибка: один из ключевых элементов интерфейса не найден.');
         return;
     }
@@ -39,7 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const resetFormState = () => {
         form.reset();
-        grecaptcha.reset();
+        if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+        }
         isRecaptchaValid = false;
         updateSubmitButtonState();
         formMessage.textContent = '';
@@ -56,15 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.key === 'Escape') hideOverlay();
     });
 
-    // --- Логика формы ---
-    window.updateSubmitButtonState = () => {
-        if (privacyCheck.checked && isRecaptchaValid) {
-            submitButton.disabled = false;
-        } else {
-            submitButton.disabled = true;
-        }
-    };
-    
     privacyCheck.addEventListener('change', updateSubmitButtonState);
 
     form.addEventListener('submit', async (e) => {
@@ -85,13 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             });
 
-            // Google Apps Script часто возвращает редирект, поэтому простой fetch без ошибки - уже успех.
             formMessage.textContent = 'Спасибо! Ваша заявка отправлена.';
             formMessage.classList.add('success');
             
             setTimeout(() => {
                 hideOverlay();
-            }, 2000); // Закрываем окно через 2 секунды
+            }, 2000);
 
         } catch (error) {
             console.error('Ошибка отправки формы:', error);
