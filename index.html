@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOLID MUSIC</title>
+    <title>SOLID MUSIC — Присоединяйся к сильнейшим</title>
+
+    <!-- SEO и общие мета-теги -->
+    <meta name="description" content="SOLID MUSIC — музыкальный лейбл для талантливых артистов. Ищем новые голоса и уникальные звучания, чтобы вместе покорять музыкальные вершины.">
+    
+    <!-- Open Graph (для соцсетей: Telegram, VK, Facebook и др.) -->
+    <meta property="og:title" content="SOLID MUSIC — Присоединяйся к сильнейшим">
+    <meta property="og:description" content="Мы — команда профессионалов, которые создают и поддерживают талантливых музыкантов.">
+    <meta property="og:image" content="https://ses-mases.github.io/solid-music/logo.png">
+    <meta property="og:url" content="https://ses-mases.github.io/solid-music/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon (иконка сайта) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -16,25 +30,52 @@
         <main>
             <div class="content">
                 <h1>Мы — SOLID MUSIC</h1>
-                <p>Команда профессионалов, которая создаёт и поддерживает талантливых музыкантов. Мы ищем новые голоса и уникальные звучания, чтобы вместе покорять музыкальные вершины.</p>
+                <p>Мы — команда профессионалов, которые создают и поддерживают талантливых музыкантов. Мы ищем новые голоса и уникальные звучания, чтобы вместе покорять музыкальные вершины.</p>
                 <p><b>Присоединяйся к сильнейшим и приготовься вертеть индустрию вместе</b></p>
-                <button id="apply-button" class="main-button">ХОЧУ</button>
+                <button id="apply-button" class="btn main-button">ХОЧУ</button>
             </div>
         </main>
     </div>
 
-    <div id="overlay" class="overlay">
-        <div class="form-container">
-            <span id="close-button" class="close-button">&times;</span>
-            <h2>Присоединиться к SOLID MUSIC</h2>
-            <form id="join-form">
+    <div id="overlay" class="overlay" role="dialog" aria-labelledby="form-title" aria-hidden="true">
+        <div class="form-container" role="document">
+            <button id="close-button" class="close-button" aria-label="Закрыть">&times;</button>
+            <h2 id="form-title">Присоединиться к SOLID MUSIC</h2>
+            
+            <form id="join-form" data-action="https://script.google.com/macros/s/AKfycbzXxhzSfmNwbb7HglkM-m8s1MJcsZ001oVDqqq8Dlf1VHapxhdHcs9ghgz_VOXmFwh8/exec">
                 <input type="text" name="Имя" placeholder="Твоё имя" required>
                 <input type="email" name="Почта" placeholder="Твоя почта" required>
                 <textarea name="Причина" placeholder="Почему именно ты?" rows="4" required></textarea>
-                <button type="submit" class="submit-button">ОТПРАВИТЬ</button>
+
+                <!-- Контейнер для Google reCAPTCHA -->
+                <div id="recaptcha-container" class="g-recaptcha" data-sitekey="6Lc85KkrAAAAAAdoTt_aRgpEC6uTKN-Ibyquz83p"></div>
+
+                <!-- Согласие с политикой конфиденциальности -->
+                <div class="privacy-consent">
+                    <input type="checkbox" id="privacy-check" required>
+                    <label for="privacy-check">Я согласен с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a></label>
+                </div>
+                
+                <button type="submit" id="submit-button" class="btn submit-button" disabled>ОТПРАВИТЬ</button>
+                
+                <!-- Сообщения для пользователя -->
+                <div id="form-message"></div>
             </form>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <p>© 2025 SOLID MUSIC. Все права защищены.</p>
+        <nav>
+            <a href="privacy.html">Политика конфиденциальности</a>
+        </nav>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <!-- Скрипт Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+                </html>    </div>
 
     <script src="script.js"></script>
 </body>
